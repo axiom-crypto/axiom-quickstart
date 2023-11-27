@@ -8,5 +8,6 @@
     "numLookupBits": 12,
     "numVirtualInstance": 2
   },
-  "querySchema": "0xc0eaeb40da1061d7cf6fe49af6f441bc6de0bbac8537cb06998977e03a4766b3"
+  "querySchema": "0xc0eaeb40da1061d7cf6fe49af6f441bc6de0bbac8537cb06998977e03a4766b3",
+  "inputSchema": "eyJibG9ja051bWJlciI6IkNpcmN1aXRWYWx1ZSIsImFkZHJlc3MiOiJDaXJjdWl0VmFsdWUifQ=="
 }
