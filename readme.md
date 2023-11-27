@@ -54,6 +54,17 @@ To run Foundry tests that simulate the Axiom integration flow, run
 forge test -vvvv
 ```
 
+## CLI Cheatsheet
+
+```bash
+# compile
+npx axiom compile axiom/circuit.ts --function nonceIncrementor --inputs data/inputs/defaultInput.json --provider $PROVIDER_URI_GOERLI
+# run
+npx axiom run axiom/circuit.ts --function nonceIncrementor --inputs data/inputs/input.json --provider $PROVIDER_URI_GOERLI
+# get sendQuery calldata
+npx axiom sendQueryArgs <callback contract address> --calldata --sourceChainId 5 --refundAddress <your Goerli wallet address> --provider $PROVIDER_URI_GOERLI
+```
+
 ## AxiomV1
 
 If you are looking for the AxiomV1 Quickstart, it is now on the [v1 branch](https://github.com/axiom-crypto/axiom-quickstart/tree/v1).
