@@ -52,15 +52,18 @@ contract AxiomNonceIncrementorTest is Test {
         vm.ffi(cli);
 
         // Generate args for sendQuery
-        string[] memory args = new string[](8);
+        string[] memory args = new string[](11);
         args[0] = "npx";
         args[1] = "axiom";
-        args[2] = "sendQuery";
-        args[3] = "--calldata";
-        args[4] = "--provider";
-        args[5] = vm.rpcUrl("goerli");
-        args[6] = "--refundAddress";
-        args[7] = vm.toString(msg.sender);
+        args[2] = "sendQueryArgs";
+        args[3] = vm.toString(address(axiomNonceInc)); // the callback target address
+        args[4] = "--calldata"; // flag to return the encoded calldata
+        args[5] = "--refundAddress";
+        args[6] = vm.toString(msg.sender);
+        args[7] = "--sourceChainId";
+        args[8] = vm.toString(sourceChainId);
+        args[9] = "--provider";
+        args[10] = vm.rpcUrl("goerli");
         vm.ffi(args);
 
         // Read args from sendQuery.json
