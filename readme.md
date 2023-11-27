@@ -4,7 +4,7 @@
 
 This starter repo is a guide to get you started making your first [Axiom](https://axiom.xyz) query as quickly as possible using the [Axiom Client](https://github.com/axiom-crypto/axiom-client). To learn more about Axiom, check out the developer docs at [docs.axiom.xyz](https://docs.axiom.xyz) or join our developer [Telegram](https://t.me/axiom_discuss).
 
-A guide on how to use this repository is available in the [Axiom Docs: Quickstart](https://docs.axiom.xyz/quickstart).
+A guide on how to use this repository is available in the [Axiom Docs: Quickstart](https://docs.axiom.xyz/introduction/quickstart).
 
 ## Setup
 
