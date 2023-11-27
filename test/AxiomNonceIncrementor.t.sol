@@ -37,7 +37,7 @@ contract AxiomNonceIncrementorTest is Test {
     }
 
     function testAxiomSendQuery() public {
-        // Use axiom cli to prove the client circuit on given input.json and read the axiom results from the run output
+        // Use axiom cli to prove the client circuit on given input.json
         string[] memory cli = new string[](10);
         cli[0] = "npx";
         cli[1] = "axiom";
@@ -50,23 +50,47 @@ contract AxiomNonceIncrementorTest is Test {
         cli[8] = "--provider";
         cli[9] = vm.rpcUrl("goerli");
         vm.ffi(cli);
+
+        // Generate args for sendQuery
+        string[] memory args = new string[](8);
+        args[0] = "npx";
+        args[1] = "axiom";
+        args[2] = "sendQuery";
+        args[3] = "--calldata";
+        args[4] = "--provider";
+        args[5] = vm.rpcUrl("goerli");
+        args[6] = "--refundAddress";
+        args[7] = vm.toString(msg.sender);
+        vm.ffi(args);
+
+        // Read args from sendQuery.json
+        string memory sendQueryJson = vm.readFile("data/sendQuery.json");
+        bytes memory sendQueryCalldata = vm.parseJsonBytes(sendQueryJson, ".calldata");
+        // suggested payment value, in wei
+        uint256 value = vm.parseJsonUint(sendQueryJson, ".value");
+
+        (bool success,) = axiomV2QueryMock.call{value: value}(sendQueryCalldata);
+        require(success);
     }
 
     function testAxiomFulfillQuery() public {
         testAxiomSendQuery();
-
+        // testAxiomSendQuery already proved the client circuit on input.json
+        // Now we read the outputs from output.json
         string memory runOutput = vm.readFile("data/output.json");
         bytes memory computeResults = vm.parseJson(runOutput, ".computeResults");
         bytes32[] memory axiomResults = abi.decode(computeResults, (bytes32[]));
 
-        // Without true Axiom fulfillment, the Ethereum data used in the client circuit is UNVERIFIED.
+        // WARNING: Without true Axiom fulfillment, the Ethereum data used in the client circuit is UNVERIFIED.
 
         address caller = msg.sender; // this is who initiated the query
         // For this test we will prank the AxiomV2Query fulfillment by pranking the callback with the axiomResults.
-        // In production, this call will be done by the AxiomV2Query contract
+        // In production, this call will be done by the AxiomV2Query contract AFTER the query has been fulfilled and validated.
         vm.prank(axiomV2QueryMock);
-        uint256 queryId = 0; // TMP
-        bytes memory extraData = ""; // TMP
+        string memory sendQueryJson = vm.readFile("data/sendQuery.json");
+        uint256 queryId = vm.parseJsonUint(sendQueryJson, ".queryId");
+        bytes memory extraData = ""; // no extraData in this example
+
         axiomNonceInc.axiomV2Callback(sourceChainId, caller, querySchema, queryId, axiomResults, extraData);
     }
 }
