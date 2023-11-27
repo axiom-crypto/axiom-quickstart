@@ -13,6 +13,7 @@
 /out/
 
 # production
+pnpm-lock.yaml
 /build
 
 # misc
@@ -33,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/cache
+
+.env
