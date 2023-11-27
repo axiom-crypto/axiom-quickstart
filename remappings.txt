@@ -1,11 +1,3 @@
-@create3-factory/=lib/axiom-v2-contracts/lib/create3-factory/src/
-@openzeppelin/contracts-upgradeable/=lib/axiom-v2-contracts/lib/openzeppelin-contracts-upgradeable/contracts/
-@openzeppelin/contracts/=lib/axiom-v2-contracts/lib/openzeppelin-contracts/contracts/
-@solmate-utils/=lib/axiom-v2-contracts/lib/solmate/src/utils/
 axiom-v2-contracts/=lib/axiom-v2-contracts/
-create3-factory/=lib/axiom-v2-contracts/lib/create3-factory/
 ds-test/=lib/forge-std/lib/ds-test/src/
 forge-std/=lib/forge-std/src/
-openzeppelin-contracts-upgradeable/=lib/axiom-v2-contracts/lib/openzeppelin-contracts-upgradeable/
-openzeppelin-contracts/=lib/axiom-v2-contracts/lib/openzeppelin-contracts/
-solmate/=lib/axiom-v2-contracts/lib/solmate/src/
