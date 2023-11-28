@@ -1,4 +1,4 @@
-# Axiom Quickstart
+# AxiomV1 Quickstart
 
  > ℹ️**NOTE**: This is a quickstart guide for AxiomV1. For the quickstart using the latest version of Axiom, see the [main branch of axiom-quickstart](https://github.com/axiom-crypto/axiom-quickstart).
 
