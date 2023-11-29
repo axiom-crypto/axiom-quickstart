@@ -1,4 +1,4 @@
-# AxiomV1 Quickstart
+# Axiom Quickstart
 
 ## Introduction
 
