@@ -1,8 +1,10 @@
-# Axiom Quickstart
+# AxiomV1 Quickstart
+
+ > ℹ️**NOTE**: This is a quickstart guide for AxiomV1. For the quickstart using the latest version of Axiom, see the [main branch of axiom-quickstart](https://github.com/axiom-crypto/axiom-quickstart).
 
 ## Introduction
 
-This starter repo is a guide to get you started making your first [Axiom](https://axiom.xyz) query as quickly as possible using the [Axiom SDK](https://github.com/axiom-crypto/axiom-sdk).  To learn more about Axiom, check out the developer docs at [docs.axiom.xyz](https://docs.axiom.xyz) or join our developer [Telegram](https://t.me/axiom_discuss).
+This starter repo is a guide to get you started making your first [Axiom](https://axiom.xyz) V1 query as quickly as possible. To learn more about Axiom, check out the V1 developer docs at [docs.axiom.xyz](https://docs-v1.axiom.xyz) or join our developer [Telegram](https://t.me/axiom_discuss).
 
 ## Setup
 
@@ -20,7 +22,7 @@ pnpm setup
 source ~/.bashrc
 ```
 
-To install this project's dependencies, run
+To install this project's Typescript dependencies, run
 
 ```bash
 pnpm install
@@ -33,16 +35,8 @@ You can export your Goerli private key in Metamask by going to "Account Details"
 
 ## Run
 
-To run the script in [`index.ts`](./src/index.ts) that sends a query to `AxiomV2QueryMock` on Goerli testnet, run
+To run the project, use the following command:
 
 ```bash
-pnpm start
+ts-node src/index.ts
 ```
-
-## Results
-
-You can view your Query on [Axiom Explorer | Goerli (Mock)](https://explorer.axiom.xyz/v2/goerli/mock).
-
-## AxiomV1
-
-If you are looking for the AxiomV1 Quickstart, it is now on the [v1 branch](https://github.com/axiom-crypto/axiom-quickstart/tree/v1).
