@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AxiomCircuitProvider } from "@axiom-crypto/react";
 import circuitBuild from "./lib/circuit/build.json";
+import { nonceIncrementor } from "../../axiom/circuit";
 
 export default function AxiomProvider({
   children
@@ -14,6 +15,7 @@ export default function AxiomProvider({
 
   return (
     <AxiomCircuitProvider
+      circuit={nonceIncrementor}
       build={circuitBuild}
       providerUri={process.env.NEXT_PUBLIC_ALCHEMY_URI_GOERLI as string}
       chainId={5}
