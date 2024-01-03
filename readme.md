@@ -43,7 +43,7 @@ foundryup
 To install this project's smart contract dependencies, run
 
 ```bash
-foundry install
+forge install
 ```
 
 ## Test
