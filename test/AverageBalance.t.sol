@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "forge-std/Test.sol";
+import {AxiomTest} from "./AxiomTest.sol";
 import {AverageBalance} from "../src/AverageBalance.sol";
 import {IAxiomV2Query} from "axiom-v2-contracts/contracts/interfaces/query/IAxiomV2Query.sol";
 
-contract AverageBalanceTest is Test {
+contract AverageBalanceTest is AxiomTest {
     AverageBalance public averageBalance;
     address public axiomV2QueryMock = 0xf15cc7B983749686Cd1eCca656C3D3E46407DC1f;
     bytes32 querySchema;
@@ -14,35 +14,12 @@ contract AverageBalanceTest is Test {
     function setUp() public {
         vm.createSelectFork("goerli");
         vm.makePersistent(axiomV2QueryMock);
-
-        // Use axiom cli to compile circuit and read the query schema from build artifacts
-        string[] memory cli = new string[](6);
-        cli[0] = "npx";
-        cli[1] = "axiom";
-        cli[2] = "compile";
-        cli[3] = "app/axiom/average.circuit.ts";
-        cli[4] = "--provider";
-        cli[5] = vm.rpcUrl("goerli");
-        bytes memory res = vm.ffi(cli);
-        // console.logString(string(res));
-
-        string memory artifact = vm.readFile("app/axiom/data/build.json");
-        querySchema = bytes32(vm.parseJson(artifact, ".querySchema"));
-        emit log_named_bytes32("querySchema", querySchema);
-
+        querySchema = _axiomCompile("app/axiom/average.circuit.ts", "goerli");
         averageBalance = new AverageBalance(axiomV2QueryMock, sourceChainId, querySchema);
     }
 
     function testAxiomSendQuery() public {
-        // Use axiom cli to prove the client circuit on given input.json
-        string[] memory cli = new string[](6);
-        cli[0] = "npx";
-        cli[1] = "axiom";
-        cli[2] = "run";
-        cli[3] = "app/axiom/average.circuit.ts";
-        cli[4] = "--provider";
-        cli[5] = vm.rpcUrl("goerli");
-        vm.ffi(cli);
+        _axiomRun("app/axiom/average.circuit.ts", "goerli");
 
         // Generate args for sendQuery
         string[] memory args = new string[](15);
