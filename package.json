@@ -3,12 +3,14 @@
   "version": "0.2.0",
   "description": "Axiom Quickstart",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "ts-node app/index.ts"
+  },
   "keywords": [],
   "author": "Intrinsic Technologies",
   "license": "ISC",
   "dependencies": {
-    "@axiom-crypto/client": "0.1.1",
+    "@axiom-crypto/client": "0.1.5-rc.3",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
