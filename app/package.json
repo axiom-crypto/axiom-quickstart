@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@axiom-crypto/client": "^0.1.4",
     "@axiom-crypto/react": "^0.1.1",
     "@web3modal/wagmi": "^3.5.1",
     "ethers": "^6.9.1",

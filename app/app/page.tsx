@@ -4,6 +4,8 @@ import React from 'react';
 import InteractiveCodeDisplay from './components/InteractiveCodeDisplay';
 import style from './pages/HomePage.module.css';
 import ConnectWallet from "./components/ui/ConnectWallet";
+import BuildQuery from "./components/BuildQuery";
+import { bytes32 } from "./lib/utils";
 
 interface PageProps {
   params: Params;
@@ -20,10 +22,27 @@ interface SearchParams {
 
 export default function Home({ searchParams }: PageProps) {
   const connected = searchParams?.connected as string ?? "";
+  const blockNumber = searchParams?.blockNumber as string ?? "";
+
+  // const circuit = useAxiomCircuit();
 
   const renderButton = () => {
     return <ConnectWallet connected={connected} />;
   }
+
+   // This function is called when the button is clicked
+   const handleClick = async () => {
+    debugger;
+    const inputs = {
+      address: connected,
+      blockNumber: 1,
+    };
+    <BuildQuery
+          inputs={inputs}
+          callbackAddress={connected}
+          callbackExtraData={bytes32(connected)}
+        />
+  };
 
   const solutionCode1 = 
   `
@@ -100,7 +119,7 @@ export default function Home({ searchParams }: PageProps) {
         Sending a Query<br />
         Now that this Next.js dApp includes the Axiom circuit file, we can go ahead 
         and have the user connect their wallet, which will then pass their address as an input to the circuit. The user’s browser generates a local client-side proof, which we send as an on-chain Query to the Axiom ZK prover to aggregate into a ZK proof that can be verified on-chain. We ask the user to submit 0.0205 ETH with their Query, which covers the cost of the proving and the callback.<br />
-        <button className={style.button}>Generate and Send Proof on Goerli</button>
+        <button onClick={handleClick} className={style.button}>Generate and Send Proof on Goerli</button>
       </li>
       <li className={style.li}>
         See status of a Query<br />
