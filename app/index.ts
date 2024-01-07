@@ -41,7 +41,7 @@ const axiomMain = async () => {
   );
 
   const axiomV2QueryAddr = "0x8ec7b212a983b1ebbfacfd69794ef179da1db0e0";
-  const deployedCallbackAddr = "0x973aBC20172BA768B2285DA76CCc18741f7fBA0D";
+  const deployedCallbackAddr = "0x752056074aceabac231801cbfa68900744eebc98";
   const senderAddress = await signer.getAddress();
 
   const sendQueryArgs = await axiomCircuit.getSendQueryArgs({
