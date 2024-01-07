@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from './providers'
 import AxiomProvider from './axiomProvider';
+import Sidebar from './components/ui/Sidebar'; // Import your Sidebar component
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,12 +21,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+      {/* <Router> */}
+
       <Providers>
               <AxiomProvider>
+              <div className="flex min-h-screen bg-gray-100">
+              <Sidebar /> 
+              <div className="flex-1 p-8">
                 {children}
+                </div>
+            </div>
               </AxiomProvider>
         </Providers>
+        {/* </Router> */}
+
         </body>
     </html>
+
   )
 }

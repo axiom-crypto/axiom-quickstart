@@ -1,11 +1,12 @@
 "use client";
 
 import React from 'react';
-// import Sidebar from './components/ui/Sidebar'; // Ensure this is the correct path
+import Sidebar from './components/ui/Sidebar';
 import InteractiveCodeDisplay from './components/InteractiveCodeDisplay';
 import ConnectWallet from "./components/ui/ConnectWallet";
 import BuildQuery from "./components/BuildQuery";
 import { bytes32 } from "./lib/utils";
+import { Link } from 'react-router-dom';
 
 interface PageProps {
   params: Params;
@@ -31,17 +32,17 @@ const Home: React.FC<PageProps> = ({ searchParams }) => {
   }
 
   //  This function is called when the button is clicked
-  //  const handleClick = async () => {
-  //   const inputs = {
-  //     address: connected,
-  //     blockNumber: 1,
-  //   };
-  //   <BuildQuery
-  //         inputs={inputs}
-  //         callbackAddress={connected}
-  //         callbackExtraData={bytes32(connected)}
-  //       />
-  // };
+   const handleClick = async () => {
+    const inputs = {
+      address: connected,
+      blockNumber: 1,
+    };
+    <BuildQuery
+          inputs={inputs}
+          callbackAddress={connected}
+          callbackExtraData={bytes32(connected)}
+        />
+  };
 
   const solutionCode1 = 
   `
@@ -121,7 +122,7 @@ const Home: React.FC<PageProps> = ({ searchParams }) => {
         Sending a Query<br />
         Now that this Next.js dApp includes the Axiom circuit file, we can go ahead 
         and have the user connect their wallet, which will then pass their address as an input to the circuit. The user’s browser generates a local client-side proof, which we send as an on-chain Query to the Axiom ZK prover to aggregate into a ZK proof that can be verified on-chain. We ask the user to submit 0.0205 ETH with their Query, which covers the cost of the proving and the callback.<br />
-        {/* <button onClick={handleClick}>Generate and Send Proof on Goerli</button> */}
+        <button onClick={handleClick}>Generate and Send Proof on Goerli</button>
       </li>
       <li>
         See status of a Query<br />
