@@ -1,19 +1,22 @@
 {
   "name": "axiom-quickstart",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Axiom Quickstart",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node app/index.ts"
+    "start": "tsx app/index.ts"
   },
   "keywords": [],
   "author": "Intrinsic Technologies",
   "license": "ISC",
   "dependencies": {
-    "@axiom-crypto/client": "0.1.5-rc.3",
-    "dotenv": "^16.3.1"
+    "@axiom-crypto/client": "0.1.5-rc.7",
+    "@axiom-crypto/core": "2.2.52-rc2.1",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.9.2"
   },
   "devDependencies": {
+    "tsx": "^4.7.0",
     "typescript": "^5.3.2"
   }
 }
