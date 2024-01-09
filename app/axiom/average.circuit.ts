@@ -18,7 +18,7 @@ export interface CircuitInputs {
 
 // Example inputs that the circuit will use for testing
 export const inputs = {
-  blockNumber: 10105939,
+  blockNumber: 10105938,
   address: "0x8018fe32fCFd3d166E8b4c4E37105318A84BA11b"
 }
 

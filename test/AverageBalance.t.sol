@@ -18,30 +18,12 @@ contract AverageBalanceTest is AxiomTest {
         averageBalance = new AverageBalance(axiomV2QueryMock, sourceChainId, querySchema);
     }
 
-    function testAxiomSendQuery() public {
-        _axiomRun("app/axiom/average.circuit.ts", "goerli");
-
-        // Generate args for sendQuery
-        string[] memory args = new string[](15);
-        args[0] = "npx";
-        args[1] = "axiom";
-        args[2] = "sendQueryArgs";
-        args[3] = vm.toString(address(averageBalance)); // the callback target address
-        args[4] = "--calldata"; // flag to return the encoded calldata
-        args[5] = "--refundAddress";
-        args[6] = vm.toString(msg.sender);
-        args[7] = "--sourceChainId";
-        args[8] = vm.toString(sourceChainId);
-        args[9] = "--input";
-        args[10] = "app/axiom/data/output.json";
-        args[11] = "--output";
-        args[12] = "app/axiom/data/sendQuery.json";
-        args[13] = "--provider";
-        args[14] = vm.rpcUrl("goerli");
-        vm.ffi(args);
+    function test_axiomSendQuery() public {
+        _axiomProve("app/axiom/average.circuit.ts", "goerli", sourceChainId);
+        _axiomQuery("goerli", address(averageBalance), sourceChainId);
 
         // Read args from sendQuery.json
-        string memory sendQueryJson = vm.readFile("app/axiom/data/sendQuery.json");
+        string memory sendQueryJson = vm.readFile("app/axiom/data/query.json");
         bytes memory sendQueryCalldata = vm.parseJsonBytes(sendQueryJson, ".calldata");
         // suggested payment value, in wei
         uint256 value = vm.parseJsonUint(sendQueryJson, ".value");
@@ -50,8 +32,8 @@ contract AverageBalanceTest is AxiomTest {
         require(success);
     }
 
-    function testAxiomFulfillQuery() public {
-        testAxiomSendQuery();
+    function test_axiomFulfillQuery() public {
+        test_axiomSendQuery();
         // testAxiomSendQuery already proved the client circuit on input.json
         // Now we read the outputs from output.json
         string memory runOutput = vm.readFile("app/axiom/data/output.json");
