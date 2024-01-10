@@ -4,3 +4,6 @@
 [submodule "lib/axiom-v2-contracts"]
 	path = lib/axiom-v2-contracts
 	url = https://github.com/axiom-crypto/axiom-v2-contracts
+[submodule "lib/axiom-v2-contracts-working"]
+	path = lib/axiom-v2-contracts-working
+	url = https://github.com/axiom-crypto/axiom-v2-contracts-working
