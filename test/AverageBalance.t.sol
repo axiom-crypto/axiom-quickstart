@@ -2,7 +2,7 @@
 pragma solidity ^0.8.19;
 
 import { AxiomTest } from "@axiom-v2-client/test/AxiomTest.sol";
-import { IAxiomV2Query } from "@axiom-v2-client/interfaces/IAxiomV2Query.sol";
+import { IAxiomV2Query } from "@axiom-v2-client/interfaces/query/IAxiomV2Query.sol";
 
 import { AverageBalance } from "../src/AverageBalance.sol";
 
