@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import {AxiomTest} from "./AxiomTest.sol";
-import {AverageBalance} from "../src/AverageBalance.sol";
-import {IAxiomV2Query} from "axiom-v2-contracts/contracts/interfaces/query/IAxiomV2Query.sol";
+import { AxiomTest } from "./AxiomTest.sol";
+import { AverageBalance } from "../src/AverageBalance.sol";
+import { IAxiomV2Query } from "axiom-v2-contracts/contracts/interfaces/query/IAxiomV2Query.sol";
 
 contract AverageBalanceTest is AxiomTest {
     AverageBalance public averageBalance;
@@ -28,7 +28,7 @@ contract AverageBalanceTest is AxiomTest {
         // suggested payment value, in wei
         uint256 value = vm.parseJsonUint(sendQueryJson, ".value");
 
-        (bool success,) = axiomV2QueryMock.call{value: value}(sendQueryCalldata);
+        (bool success,) = axiomV2QueryMock.call{ value: value }(sendQueryCalldata);
         require(success);
     }
 

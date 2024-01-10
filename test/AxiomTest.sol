@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
 
+import { IAxiomV2Query } from "axiom-v2-contracts/contracts/interfaces/query/IAxiomV2Query.sol";
+
 abstract contract AxiomTest is Test {
     function _axiomCompile(string memory circuitPath, string memory urlOrAlias)
         internal
@@ -28,10 +30,12 @@ abstract contract AxiomTest is Test {
         querySchema = bytes32(vm.parseJson(artifact, ".querySchema"));
     }
 
-    function _axiomProve(string memory circuitPath, string memory urlOrAlias, uint64 sourceChainId)
-        internal
-        returns (bytes memory output)
-    {
+    function _axiomProve(
+        string memory circuitPath,
+        string memory urlOrAlias,
+        uint64 sourceChainId,
+        IAxiomV2Query.AxiomV2FeeData memory feeData
+    ) internal returns (bytes memory output) {
         string[] memory cli = new string[](18);
         cli[0] = "npx";
         cli[1] = "axiom";
