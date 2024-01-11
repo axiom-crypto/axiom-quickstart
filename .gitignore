@@ -43,3 +43,5 @@ next-env.d.ts
 .vscode
 app/axiom/data/*
 package-lock.json
+
+.axiom
