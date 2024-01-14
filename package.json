@@ -6,7 +6,7 @@
   "author": "Intrinsic Technologies",
   "license": "ISC",
   "dependencies": {
-    "@axiom-crypto/client": "0.2.0-alpha.7",
+    "@axiom-crypto/client": "0.2.2-rc2.0",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {

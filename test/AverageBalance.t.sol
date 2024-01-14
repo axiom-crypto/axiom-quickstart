@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import { AxiomTest } from "@axiom-v2-client/test/AxiomTest.sol";
+import { AxiomTest, AxiomVm } from "@axiom-v2-client/test/AxiomTest.sol";
 import { IAxiomV2Query } from "@axiom-v2-client/interfaces/query/IAxiomV2Query.sol";
 
 import { AverageBalance } from "../src/AverageBalance.sol";
@@ -10,24 +10,22 @@ contract AverageBalanceTest is AxiomTest {
     AverageBalance public averageBalance;
 
     function setUp() public {
-        circuitPath = "src/average.circuit.ts";
         urlOrAlias = "sepolia";
         sourceChainId = 11_155_111;
+        _createSelectForkAndSetupAxiom(urlOrAlias, sourceChainId, 5_057_320);
 
-        vm.createSelectFork(urlOrAlias, 5_057_320);
-        vm.makePersistent(axiomV2QueryAddress);
-        axiomV2QueryMock = IAxiomV2Query(axiomV2QueryAddress);
-
-        querySchema = _axiomCompile(circuitPath, urlOrAlias);
+        circuitPath = "src/average.circuit.ts";
+        inputPath = "test/input.json";
+        querySchema = axiomVm.compile(circuitPath, inputPath, urlOrAlias);
         averageBalance = new AverageBalance(axiomV2QueryAddress, sourceChainId, querySchema);
     }
 
     function test_axiomSendQuery() public {
-        AxiomTest.AxiomSendQueryArgs memory args = _axiomSendQuery(
+        AxiomVm.AxiomSendQueryArgs memory args = axiomVm.sendQueryArgs(
             circuitPath, inputPath, urlOrAlias, address(averageBalance), callbackExtraData, sourceChainId, feeData
         );
 
-        uint256 queryId = axiomV2QueryMock.sendQuery{ value: args.value }(
+        axiomV2Query.sendQuery{ value: args.value }(
             args.sourceChainId,
             args.dataQueryHash,
             args.computeQuery,
@@ -40,7 +38,7 @@ contract AverageBalanceTest is AxiomTest {
     }
 
     function test_axiomCallback() public {
-        AxiomTest.AxiomFulfillCallbackArgs memory args = _axiomFulfillCallback(
+        AxiomVm.AxiomFulfillCallbackArgs memory args = axiomVm.fulfillCallbackArgs(
             circuitPath,
             inputPath,
             urlOrAlias,
@@ -50,6 +48,6 @@ contract AverageBalanceTest is AxiomTest {
             feeData,
             msg.sender
         );
-        _axiomPrankCallback(args);
+        axiomVm.prankCallback(args);
     }
 }
