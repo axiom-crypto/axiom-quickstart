@@ -26,16 +26,12 @@ export const circuit = async ({
   blockNumber,
   address,
 }: CircuitInputs) => {
-  // Since the blockNumber is a variable input, let's add it to the results that will be sent to our callback function
-  addToCallback(blockNumber);
-  addToCallback(address);
-
   // Number of samples to take. Note that this must be a constant value and NOT an input because the size of the circuit 
   // must be known at compile time.
-  const samples = 10; 
+  const samples = 8; 
 
   // Number of blocks between each sample.
-  const spacing = 100;
+  const spacing = 900;
 
   // Validate that the block number is greater than the number of samples times the spacing
   if (blockNumber.value() <= (samples * spacing)) {
@@ -62,6 +58,9 @@ export const circuit = async ({
   // Divide by the number of samples to get the average value
   const average = div(total, samples);
 
-  // We add the result to the callback, which our Solidity contract will then handle
+  // We call `addToCallback` on all values that we would like to be passed to our contract after the circuit has
+  // been proven in ZK. The values can then be handled by our contract once the prover calls the callback function.
+  addToCallback(blockNumber);
+  addToCallback(address);
   addToCallback(average);
 };
