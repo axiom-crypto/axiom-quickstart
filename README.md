@@ -16,10 +16,9 @@ pnpm install     # or `npm install` or `yarn install`
 For installation instructions for Foundry or a Javascript package manager (`npm`, `yarn`, or `pnpm`), see [Package Manager Installation](#package-manager-installation). 
 
 
-Copy `.env.example` to `.env` and fill in with your provider URL (and optionally Goerli private key).
-You can export your Goerli private key in Metamask by going to "Account Details" and then "Export Private Key".
+Copy `.env.example` to `.env` and fill in your JSON-RPC provider URL.  If you'd like to send transactions from a local hot wallet on testnet also add a Sepolia private key.
 
-> ⚠️ **WARNING**: Never use your mainnet private key on a testnet! You should never use a private key for an account you have on both mainnet and a testnet.
+> ⚠️ **WARNING**: Never use your mainnet private key on a testnet! If you use this option, make sure you are not using the same account on mainnet.
 
 ## Test
 
