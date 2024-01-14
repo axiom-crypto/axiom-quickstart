@@ -36,7 +36,7 @@ npx axiom circuit compile app/axiom/average.circuit.ts --function circuit --inpu
 # prove
 npx axiom circuit prove app/axiom/average.circuit.ts --function circuit --compiled app/axiom/data/complied.json --inputs app/axiom/data/inputs/input.json --outputs app/axiom/data/output.json --sourceChainId 11155111 --provider $PROVIDER_URI_SEPOLIA
 # get parameters to send a query to Axiom using sendQuery 
-npx axiom circuit query-params <callback contract address> --sourceChainId 11155111 --refundAddress <your Goerli wallet address> --proven app/axiom/data/output.json --outputs app/axiom/data/query.json --provider $PROVIDER_URI_SEPOLIA
+npx axiom circuit query-params <callback contract address> --sourceChainId 11155111 --refundAddress <your Sepolia wallet address> --proven app/axiom/data/output.json --outputs app/axiom/data/query.json --provider $PROVIDER_URI_SEPOLIA
 ```
 
 ## Package Manager Installation
