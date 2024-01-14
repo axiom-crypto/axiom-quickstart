@@ -14,7 +14,7 @@ contract AverageBalanceTest is AxiomTest {
         sourceChainId = 11_155_111;
         _createSelectForkAndSetupAxiom(urlOrAlias, sourceChainId, 5_057_320);
 
-        circuitPath = "src/average.circuit.ts";
+        circuitPath = "app/axiom/average.circuit.ts";
         inputPath = "test/input.json";
         querySchema = axiomVm.compile(circuitPath, inputPath, urlOrAlias);
         averageBalance = new AverageBalance(axiomV2QueryAddress, sourceChainId, querySchema);
