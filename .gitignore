@@ -38,3 +38,10 @@ next-env.d.ts
 /cache
 
 .env
+.env.local
+
+.vscode
+app/axiom/data/proven.json
+package-lock.json
+
+.axiom
