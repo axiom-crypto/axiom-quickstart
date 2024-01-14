@@ -41,7 +41,7 @@ next-env.d.ts
 .env.local
 
 .vscode
-app/axiom/data/*
+app/axiom/data/proven.json
 package-lock.json
 
 .axiom

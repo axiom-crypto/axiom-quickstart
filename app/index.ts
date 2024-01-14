@@ -4,8 +4,8 @@ import { CircuitInputs, circuit } from "./axiom/average.circuit";
 import { ethers } from "ethers";
 import { AxiomCircuit } from "@axiom-crypto/client/js";
 
-// Compiled circuit file after running `npx axiom compile app/axiom/average.circuit.ts`
-import buildJson from "./axiom/data/build.json";
+// Compiled circuit file after running `npx axiom circuit compile app/axiom/average.circuit.ts`
+import compiledJson from "./axiom/data/compiled.json";
 
 // TMP: until we expose abi in AxiomCircuit
 import axiomV2QueryJson from "./axiom/abi/AxiomV2Query.json";
@@ -28,7 +28,7 @@ const axiomMain = async () => {
   // const artifact = await axiomCircuit.compile(defaultInputs);
 
   // Instead of compiling, you can load from a saved artifact:
-  await axiomCircuit.loadSaved({ config: buildJson.config, vk: buildJson.vk });
+  await axiomCircuit.loadSaved({ config: compiledJson.config, vk: compiledJson.vk });
   await axiomCircuit.run(defaultInputs);
   console.log("Ran circuit:", axiomCircuit);
 
@@ -45,7 +45,7 @@ const axiomMain = async () => {
   const senderAddress = await signer.getAddress();
 
   const sendQueryArgs = await axiomCircuit.getSendQueryArgs({
-    callbackAddress: deployedCallbackAddr,
+    callbackTarget: deployedCallbackAddr,
     callbackExtraData: ethers.toBeHex("0x00", 32),
     callerAddress: senderAddress,
     options: { 
@@ -61,7 +61,6 @@ const axiomMain = async () => {
     axiomV2QueryJson.abi,
     signer,
   );
-
 
   console.log(
     "Sending a Query to AxiomV2QueryMock with payment amount (wei):",
