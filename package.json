@@ -13,10 +13,10 @@
     "@axiom-crypto/client": "0.2.2-rc2.0",
     "@axiom-crypto/core": "2.3.0-rc2.2",
     "dotenv": "^16.3.1",
-    "ethers": "^6.9.2"
+    "ethers": "^6.10.0"
   },
   "devDependencies": {
     "tsx": "^4.7.0",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.3"
   }
 }
