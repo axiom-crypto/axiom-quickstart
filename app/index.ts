@@ -1,15 +1,15 @@
+
 import { circuit, CircuitInputs } from "./axiom/average.circuit";
-import { Axiom } from "@axiom-crypto/client";
 import dotenv from "dotenv";
 dotenv.config();
-
+import { Axiom } from '@axiom-crypto/client';
 // Compiled circuit file after running:
 //   `npx axiom circuit compile app/axiom/average.circuit.ts`
 import compiledCircuit from "./axiom/data/compiled.json";
 
-const exampleInput: CircuitInputs = {
+const exampleInput: any = {
   blockNumber: 5000000,
-  address: "0xEaa455e4291742eC362Bc21a8C46E5F2b5ed4701"
+  address: "0xEaa455e4291742eC362Bc21a8C46E5F2b5ed4701",
 };
 
 const axiomMain = async (input: CircuitInputs) => {
