@@ -36,12 +36,11 @@ export const circuit = async (inputs: CircuitInputs) => {
   );
 
   // Get all balances for the given address at the block numbers we are sampling from
-  const balances = await Promise.all(
-    // Call `getAccount` for each sample block number concurrently
-    blockNumbers.map(
-      (sampleBlockNum: number) => getAccount(sampleBlockNum, inputs.address).balance()
-    )
-  );
+  let balances = [] as CircuitValue256[];
+  for (const blockNumber of blockNumbers) {
+    const balance = await getAccount(blockNumber, inputs.address).balance();
+    balances.push(balance); 
+  }
 
   // Calculate the total
   const total = sum(balances.map((balance: CircuitValue256) => balance.value()));
