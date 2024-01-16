@@ -16,16 +16,7 @@ export interface CircuitInputs {
   address: CircuitValue;
 }
 
-// Example inputs that the circuit will use for testing
-export const inputs = {
-  blockNumber: 5000000,
-  address: "0xEaa455e4291742eC362Bc21a8C46E5F2b5ed4701"
-}
-
-export const circuit = async ({
-  blockNumber,
-  address,
-}: CircuitInputs) => {
+export const circuit = async (inputs: CircuitInputs) => {
   // Number of samples to take. Note that this must be a constant value and NOT an input because the size of the circuit 
   // must be known at compile time.
   const samples = 8; 
@@ -34,23 +25,22 @@ export const circuit = async ({
   const spacing = 900;
 
   // Validate that the block number is greater than the number of samples times the spacing
-  if (blockNumber.value() <= (samples * spacing)) {
+  if (inputs.blockNumber.value() <= (samples * spacing)) {
     throw new Error("Block number must be greater than the number of samples times the spacing");
   }
 
   // Create an array of block numbers to sample from
   const blockNumbers = Array.from(
     {length: samples}, 
-    (_: any, i: number) => blockNumber.number() - (spacing * i)
+    (_: any, i: number) => inputs.blockNumber.number() - (spacing * i)
   );
 
   // Get all balances for the given address at the block numbers we are sampling from
-  const balances = await Promise.all(
-    // Call `getAccount` for each sample block number concurrently
-    blockNumbers.map(
-      (sampleBlockNum: number) => getAccount(sampleBlockNum, address).balance()
-    )
-  );
+  let balances = [] as CircuitValue256[];
+  for (const blockNumber of blockNumbers) {
+    const balance = await getAccount(blockNumber, inputs.address).balance();
+    balances.push(balance); 
+  }
 
   // Calculate the total
   const total = sum(balances.map((balance: CircuitValue256) => balance.value()));
@@ -60,7 +50,7 @@ export const circuit = async ({
 
   // We call `addToCallback` on all values that we would like to be passed to our contract after the circuit has
   // been proven in ZK. The values can then be handled by our contract once the prover calls the callback function.
-  addToCallback(blockNumber);
-  addToCallback(address);
+  addToCallback(inputs.blockNumber);
+  addToCallback(inputs.address);
   addToCallback(average);
 };
