@@ -32,11 +32,13 @@ forge test -vvvv
 
 ```bash
 # compile
-npx axiom circuit compile app/axiom/average.circuit.ts --function circuit --inputs app/axiom/data/inputs/input.json --outputs app/axiom/data/compiled.json --provider $PROVIDER_URI_SEPOLIA
+npx axiom circuit compile app/axiom/average.circuit.ts --provider $PROVIDER_URI_SEPOLIA
+
 # prove
-npx axiom circuit prove app/axiom/average.circuit.ts --function circuit --compiled app/axiom/data/complied.json --inputs app/axiom/data/inputs/input.json --outputs app/axiom/data/output.json --sourceChainId 11155111 --provider $PROVIDER_URI_SEPOLIA
+npx axiom circuit prove app/axiom/average.circuit.ts --sourceChainId 11155111 --provider $PROVIDER_URI_SEPOLIA
+
 # get parameters to send a query to Axiom using sendQuery 
-npx axiom circuit query-params <callback contract address> --sourceChainId 11155111 --refundAddress <your Sepolia wallet address> --proven app/axiom/data/output.json --outputs app/axiom/data/query.json --provider $PROVIDER_URI_SEPOLIA
+npx axiom circuit query-params <callback contract address> --refundAddress <your Sepolia wallet address> --sourceChainId 11155111 --provider $PROVIDER_URI_SEPOLIA
 ```
 
 ## Package Manager Installation
@@ -46,13 +48,15 @@ Install `npm` or `yarn` or `pnpm`:
 ```bash
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-source ~/.bashrc
+source ~/.bashrc  # or `source ~/.zshrc` on newer macs
+
 # Install latest LTS node
 nvm install --lts
+
 # Install pnpm
 npm install -g pnpm
 pnpm setup
-source ~/.bashrc
+source ~/.bashrc  # or `source ~/.zshrc` on newer macs
 ```
 Install [Foundry](https://book.getfoundry.sh/getting-started/installation). The recommended way to do this is using Foundryup:
 

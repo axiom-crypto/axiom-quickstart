@@ -1,6 +1,9 @@
 import {
   sum,
+  sub,
+  mul,
   div,
+  checkLessThan,
   addToCallback,
   CircuitValue,
   CircuitValue256,
@@ -16,9 +19,12 @@ export interface CircuitInputs {
   address: CircuitValue;
 }
 
+// The function name `circuit` is searched for by default by our Axiom CLI; if you decide to 
+// change the function name, you'll also need to ensure that you also pass the Axiom CLI flag 
+// `-f <circuitFunctionName>` for it to work
 export const circuit = async (inputs: CircuitInputs) => {
-  // Number of samples to take. Note that this must be a constant value and NOT an input because the size of the circuit 
-  // must be known at compile time.
+  // Number of samples to take. Note that this must be a constant value and NOT an input because the size of 
+  // the circuit must be known at compile time.
   const samples = 8; 
 
   // Number of blocks between each sample.
@@ -29,10 +35,14 @@ export const circuit = async (inputs: CircuitInputs) => {
     throw new Error("Block number must be greater than the number of samples times the spacing");
   }
 
-  // Create an array of block numbers to sample from
+  // Perform the block number validation in the circuit as well
+  checkLessThan(mul(samples, spacing), inputs.blockNumber);
+
+  // Creates a length-8 array of block numbers to sample from, starting from input blockNumber and 
+  // decreasing by the `spacing` size.
   const blockNumbers = Array.from(
     {length: samples}, 
-    (_: any, i: number) => inputs.blockNumber.number() - (spacing * i)
+    (_: any, i: number) => sub(inputs.blockNumber, (spacing * i))
   );
 
   // Get all balances for the given address at the block numbers we are sampling from
