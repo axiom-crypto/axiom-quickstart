@@ -1,13 +1,16 @@
 [profile.default]
 src = "src"
 out = "out"
+solc = "0.8.19"
 libs = ["node_modules", "lib"]
+remappings = ["@axiom-v2-client/=lib/axiom-v2-client/src/"]
 ffi = true
 fs_permissions = [{ access = "read-write", path = ".axiom" }]
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
 [rpc_endpoints]
 sepolia = "${PROVIDER_URI_SEPOLIA}"
+mainnet = "${PROVIDER_URI_MAINNET}"
 
 [fmt]
   bracket_spacing = true
