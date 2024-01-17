@@ -1,7 +1,9 @@
 import {
   sum,
   sub,
+  mul,
   div,
+  checkLessThan,
   addToCallback,
   CircuitValue,
   CircuitValue256,
@@ -32,6 +34,9 @@ export const circuit = async (inputs: CircuitInputs) => {
   if (inputs.blockNumber.value() <= (samples * spacing)) {
     throw new Error("Block number must be greater than the number of samples times the spacing");
   }
+
+  // Perform the block number validation in the circuit as well
+  checkLessThan(mul(samples, spacing), inputs.blockNumber);
 
   // Creates a length-8 array of block numbers to sample from, starting from input blockNumber and 
   // decreasing by the `spacing` size.
