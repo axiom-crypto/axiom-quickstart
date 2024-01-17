@@ -24,6 +24,12 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
     privateKey: process.env.PRIVATE_KEY_SEPOLIA as string,
     mock: false,
   });
+  axiom.setParams({
+    callback: {
+      target: "0x4A4e2D8f3fBb3525aD61db7Fc843c9bf097c362e",
+      extraData: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+  })
   await axiom.init();
   const args = await axiom.prove(input);
 
