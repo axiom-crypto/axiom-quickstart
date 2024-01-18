@@ -10,19 +10,16 @@ contract AverageBalanceTest is AxiomTest {
     AverageBalance public averageBalance;
 
     function setUp() public {
-        urlOrAlias = "sepolia";
-        sourceChainId = 11_155_111;
-        _createSelectForkAndSetupAxiom(urlOrAlias, sourceChainId, 5_057_320);
+        _createSelectForkAndSetupAxiom("sepolia", 5_103_100);
 
-        circuitPath = "app/axiom/average.circuit.ts";
         inputPath = "test/input.json";
-        querySchema = axiomVm.compile(circuitPath, inputPath, urlOrAlias);
-        averageBalance = new AverageBalance(axiomV2QueryAddress, sourceChainId, querySchema);
+        querySchema = axiomVm.compile("app/axiom/average.circuit.ts", inputPath);
+        averageBalance = new AverageBalance(axiomV2QueryAddress, uint64(block.chainid), querySchema);
     }
 
     function test_axiomSendQuery() public {
         AxiomVm.AxiomSendQueryArgs memory args = axiomVm.sendQueryArgs(
-            circuitPath, inputPath, urlOrAlias, address(averageBalance), callbackExtraData, sourceChainId, feeData
+            inputPath, address(averageBalance), callbackExtraData, feeData
         );
 
         axiomV2Query.sendQuery{ value: args.value }(
@@ -39,12 +36,9 @@ contract AverageBalanceTest is AxiomTest {
 
     function test_axiomCallback() public {
         AxiomVm.AxiomFulfillCallbackArgs memory args = axiomVm.fulfillCallbackArgs(
-            circuitPath,
             inputPath,
-            urlOrAlias,
             address(averageBalance),
             callbackExtraData,
-            sourceChainId,
             feeData,
             msg.sender
         );
