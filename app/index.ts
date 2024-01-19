@@ -22,13 +22,13 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
     chainId: "11155111",  // Sepolia
     provider: process.env.PROVIDER_URI_SEPOLIA as string,
     privateKey: process.env.PRIVATE_KEY_SEPOLIA as string,
-    mock: true,
     callback: {
       target: "0x4A4e2D8f3fBb3525aD61db7Fc843c9bf097c362e",
     },
   });
   await axiom.init();
   const args = await axiom.prove(input);
+  console.log("args", args);
   console.log("ZK proof generated successfully.");
 
   if (!process.env.PRIVATE_KEY_SEPOLIA) {
