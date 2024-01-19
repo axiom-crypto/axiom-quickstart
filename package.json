@@ -10,7 +10,7 @@
   "author": "Intrinsic Technologies",
   "license": "ISC",
   "dependencies": {
-    "@axiom-crypto/client": "link:../axiom-sdk-client/client/dist",
+    "@axiom-crypto/client": "2.0.0",
     "dotenv": "^16.3.1",
     "ethers": "^6.10.0"
   },
