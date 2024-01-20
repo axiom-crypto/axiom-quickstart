@@ -47,10 +47,10 @@ export const circuit = async (inputs: CircuitInputs) => {
   }
 
   // Accumulate all of the balances to `total`
-  let total = witness(0);
+  let total = constant(0);
   for (const account of sampledAccounts) {
     const balance: CircuitValue256 = await account.balance();
-    total = add(total, balance.lo());
+    total = add(total, balance.toCircuitValue());
   }
 
   // Divide the total amount by the number of samples to get the average value
