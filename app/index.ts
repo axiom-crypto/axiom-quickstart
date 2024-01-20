@@ -28,7 +28,6 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
   });
   await axiom.init();
   const args = await axiom.prove(input);
-  console.log("args", args);
   console.log("ZK proof generated successfully.");
 
   if (!process.env.PRIVATE_KEY_SEPOLIA) {
