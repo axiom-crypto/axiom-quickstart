@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import { AxiomV2Client } from "@axiom-v2-client/client/AxiomV2Client.sol";
+import { AxiomV2Client } from "@axiom-crypto/v2-periphery/client/AxiomV2Client.sol";
 
 contract AverageBalance is AxiomV2Client {
     /// @dev The unique identifier of the circuit accepted by this contract.

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import { AxiomTest, AxiomVm } from "@axiom-v2-client/test/AxiomTest.sol";
-import { IAxiomV2Query } from "@axiom-v2-client/interfaces/query/IAxiomV2Query.sol";
+import { AxiomTest, AxiomVm } from "@axiom-crypto/v2-periphery/test/AxiomTest.sol";
+import { IAxiomV2Query } from "@axiom-crypto/v2-periphery/interfaces/query/IAxiomV2Query.sol";
 
 import { AverageBalance } from "../src/AverageBalance.sol";
 
@@ -18,9 +18,8 @@ contract AverageBalanceTest is AxiomTest {
     }
 
     function test_axiomSendQuery() public {
-        AxiomVm.AxiomSendQueryArgs memory args = axiomVm.sendQueryArgs(
-            inputPath, address(averageBalance), callbackExtraData, feeData
-        );
+        AxiomVm.AxiomSendQueryArgs memory args =
+            axiomVm.sendQueryArgs(inputPath, address(averageBalance), callbackExtraData, feeData);
 
         axiomV2Query.sendQuery{ value: args.value }(
             args.sourceChainId,
@@ -35,13 +34,8 @@ contract AverageBalanceTest is AxiomTest {
     }
 
     function test_axiomCallback() public {
-        AxiomVm.AxiomFulfillCallbackArgs memory args = axiomVm.fulfillCallbackArgs(
-            inputPath,
-            address(averageBalance),
-            callbackExtraData,
-            feeData,
-            msg.sender
-        );
+        AxiomVm.AxiomFulfillCallbackArgs memory args =
+            axiomVm.fulfillCallbackArgs(inputPath, address(averageBalance), callbackExtraData, feeData, msg.sender);
         axiomVm.prankCallback(args);
     }
 }
