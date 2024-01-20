@@ -1,5 +1,5 @@
 import {
-  sum,
+  add,
   sub,
   mul,
   div,
@@ -38,24 +38,22 @@ export const circuit = async (inputs: CircuitInputs) => {
   // Perform the block number validation in the circuit as well
   checkLessThan(mul(samples, spacing), inputs.blockNumber);
 
-  // Creates a length-8 array of block numbers to sample from, starting from input blockNumber and 
-  // decreasing by the `spacing` size.
-  const blockNumbers = Array.from(
-    {length: samples}, 
-    (_: any, i: number) => sub(inputs.blockNumber, (spacing * i))
-  );
-
-  // Get all balances for the given address at the block numbers we are sampling from
-  let balances = [] as CircuitValue256[];
-  for (const blockNumber of blockNumbers) {
-    const balance = await getAccount(blockNumber, inputs.address).balance();
-    balances.push(balance); 
+  // Get account balance at the sample block numbers
+  let sampledAccounts = new Array(samples);
+  for (let i = 0; i < samples; i++) {
+    const sampleBlockNumber: CircuitValue = sub(inputs.blockNumber, mul(spacing, i));
+    const account = getAccount(sampleBlockNumber, inputs.address);
+    sampledAccounts[i] = account;
   }
 
-  // Calculate the total
-  const total = sum(balances.map((balance: CircuitValue256) => balance.value()));
+  // Accumulate all of the balances to `total`
+  let total = constant(0);
+  for (const account of sampledAccounts) {
+    const balance: CircuitValue256 = await account.balance();
+    total = add(total, balance.toCircuitValue());
+  }
 
-  // Divide by the number of samples to get the average value
+  // Divide the total amount by the number of samples to get the average value
   const average = div(total, samples);
 
   // We call `addToCallback` on all values that we would like to be passed to our contract after the circuit has

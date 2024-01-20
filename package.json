@@ -1,6 +1,6 @@
 {
   "name": "axiom-quickstart",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Axiom Quickstart",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,7 @@
   "author": "Intrinsic Technologies",
   "license": "ISC",
   "dependencies": {
-    "@axiom-crypto/client": "0.2.2-rc2.2-alpha.1",
-    "@axiom-crypto/core": "2.3.0-rc2.2",
+    "@axiom-crypto/client": "2.0.0",
     "dotenv": "^16.3.1",
     "ethers": "^6.10.0"
   },
