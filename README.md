@@ -29,6 +29,14 @@ To run Foundry tests that simulate the Axiom integration flow, run
 forge test -vvvv
 ```
 
+## Send a Query on-chain
+
+To send a Query on Sepolia testnet (requires `PRIVATE_KEY_SEPOLIA` in `.env` file), run
+
+```bash
+npx tsx app/index.ts 
+```
+
 ## CLI Cheatsheet
 
 ```bash
