@@ -38,7 +38,7 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
   console.log("Sending Query to Axiom on-chain...");
   const receipt = await axiom.sendQuery(args);
   console.log("Transaction receipt:", receipt);
-  console.log(`View your Query on Axiom Explorer: https://explorer.axiom.xyz/v2/sepolia/mock/query/${args.queryId}`);
+  console.log(`View your Query on Axiom Explorer: https://explorer.axiom.xyz/v2/sepolia/query/${args.queryId}`);
 };
 
 axiomMain(inputs);
