@@ -1,10 +1,24 @@
 [profile.default]
 src = "src"
 out = "out"
+solc = "0.8.19"
 libs = ["node_modules", "lib"]
+remappings = ["@axiom-crypto/v2-periphery/=lib/axiom-v2-periphery/src/", "ds-test/=lib/forge-std/lib/ds-test/src/", "forge-std/=lib/forge-std/src/"]
 ffi = true
-fs_permissions = [{ access = "read", path = "./data" }]
+fs_permissions = [{ access = "read-write", path = ".axiom" }]
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
 [rpc_endpoints]
-goerli = "${PROVIDER_URI_GOERLI}"
+sepolia = "${PROVIDER_URI_SEPOLIA}"
+mainnet = "${PROVIDER_URI_MAINNET}"
+
+[fmt]
+  bracket_spacing = true
+  int_types = "long"
+  line_length = 120
+  multiline_func_header = "attributes_first"
+  number_underscore = "thousands"
+  quote_style = "double"
+  single_line_statement_blocks = "multi"
+  tab_width = 4
+  wrap_comments = false
