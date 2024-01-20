@@ -3,7 +3,7 @@ src = "src"
 out = "out"
 solc = "0.8.19"
 libs = ["node_modules", "lib"]
-remappings = ["@axiom-v2-client/=lib/axiom-v2-client/src/", "ds-test/=lib/forge-std/lib/ds-test/src/", "forge-std/=lib/forge-std/src/"]
+remappings = ["@axiom-crypto/v2-periphery/=lib/axiom-v2-periphery/src/", "ds-test/=lib/forge-std/lib/ds-test/src/", "forge-std/=lib/forge-std/src/"]
 ffi = true
 fs_permissions = [{ access = "read-write", path = ".axiom" }]
 
