@@ -12,16 +12,17 @@ import {
   getAccount,
 } from "@axiom-crypto/client";
 
-/// For type safety, define the input types to your circuit here.
-/// These should be the _variable_ inputs to your circuit. Constants can be hard-coded into the circuit itself.
+// For type safety, define the input types to your circuit here.
+// These should be the _variable_ inputs to your circuit. Constants can be hard-coded into the circuit itself.
 export interface CircuitInputs {
   blockNumber: CircuitValue;
   address: CircuitValue;
 }
 
-/// Define **working** inputs to your circuit here. These are used for compilation.
+// Default inputs to use for compiling the circuit. These values should be different than the inputs fed into
+// the circuit at proving time.
 export const defaultInputs = {
-  "blockNumber": 5000000,
+  "blockNumber": 4000000,
   "address": "0xEaa455e4291742eC362Bc21a8C46E5F2b5ed4701"
 };
 
