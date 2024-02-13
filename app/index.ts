@@ -15,10 +15,6 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
   const axiom = new Axiom({
     circuit: circuit,
     compiledCircuit: compiledCircuit,
-    inputSchema: {
-      blockNumber: "uint32",
-      address: "address",
-    },
     chainId: "11155111",  // Sepolia
     provider: process.env.PROVIDER_URI_SEPOLIA as string,
     privateKey: process.env.PRIVATE_KEY_SEPOLIA as string,

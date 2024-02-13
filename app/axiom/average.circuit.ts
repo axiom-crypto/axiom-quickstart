@@ -12,12 +12,19 @@ import {
   getAccount,
 } from "@axiom-crypto/client";
 
-/// For type safety, define the input types to your circuit here.
-/// These should be the _variable_ inputs to your circuit. Constants can be hard-coded into the circuit itself.
+// For type safety, define the input types to your circuit here.
+// These should be the _variable_ inputs to your circuit. Constants can be hard-coded into the circuit itself.
 export interface CircuitInputs {
   blockNumber: CircuitValue;
   address: CircuitValue;
 }
+
+// Default inputs to use for compiling the circuit. These values should be different than the inputs fed into
+// the circuit at proving time.
+export const defaultInputs = {
+  "blockNumber": 4000000,
+  "address": "0xEaa455e4291742eC362Bc21a8C46E5F2b5ed4701"
+};
 
 // The function name `circuit` is searched for by default by our Axiom CLI; if you decide to 
 // change the function name, you'll also need to ensure that you also pass the Axiom CLI flag 
@@ -25,7 +32,7 @@ export interface CircuitInputs {
 export const circuit = async (inputs: CircuitInputs) => {
   // Number of samples to take. Note that this must be a constant value and NOT an input because the size of 
   // the circuit must be known at compile time.
-  const samples = 8; 
+  const samples = 8;
 
   // Number of blocks between each sample.
   const spacing = 900;
