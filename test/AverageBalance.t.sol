@@ -10,7 +10,7 @@ contract AverageBalanceTest is AxiomTest {
 
     struct AxiomInput {
         uint64 blockNumber;
-        address _address;
+        address addr;
     }
 
     AverageBalance public averageBalance;
@@ -21,8 +21,8 @@ contract AverageBalanceTest is AxiomTest {
         _createSelectForkAndSetupAxiom("sepolia", 5_103_100);
 
         input =
-            AxiomInput({ blockNumber: 4_205_938, _address: address(0x8018fe32fCFd3d166E8b4c4E37105318A84BA11b) });
-        querySchema = axiomVm.readCircuit("app/axiom/average.circuit.ts");
+            AxiomInput({ blockNumber: 4_205_938, addr: address(0x8018fe32fCFd3d166E8b4c4E37105318A84BA11b) });
+        querySchema = axiomVm.readCircuit("app/axiom/average.circuit.ts", "app/axiom/data/inputs.json");
         averageBalance = new AverageBalance(axiomV2QueryAddress, uint64(block.chainid), querySchema);
     }
 
