@@ -23,7 +23,7 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
     },
   });
   await axiom.init();
-  const args = await axiom.prove(input);
+  await axiom.prove(input);
   console.log("ZK proof generated successfully.");
 
   if (!process.env.PRIVATE_KEY_SEPOLIA) {
@@ -32,7 +32,7 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
   }
 
   console.log("Sending Query to Axiom on-chain...");
-  const receipt = await axiom.sendQuery(args);
+  const receipt = await axiom.sendQuery();
   console.log("Transaction receipt:", receipt);
   console.log(`View your Query on Axiom Explorer: https://explorer.axiom.xyz/v2/sepolia/query/${args.queryId}`);
 };
