@@ -13,7 +13,6 @@
 /out/
 
 # production
-pnpm-lock.yaml
 /build
 
 # misc
@@ -42,6 +41,5 @@ next-env.d.ts
 
 .vscode
 app/axiom/data/proven.json
-package-lock.json
 
 .axiom
