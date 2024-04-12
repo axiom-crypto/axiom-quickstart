@@ -10,7 +10,7 @@
   "author": "Intrinsic Technologies",
   "license": "MIT",
   "dependencies": {
-    "@axiom-crypto/client": "2.0.8",
+    "@axiom-crypto/client": "2.0.8-alpha.0",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {

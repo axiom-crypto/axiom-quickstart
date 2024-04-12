@@ -15,12 +15,17 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
   const axiom = new Axiom({
     circuit: circuit,
     compiledCircuit: compiledCircuit,
-    chainId: "11155111",  // Sepolia
-    provider: process.env.PROVIDER_URI_SEPOLIA as string,
-    privateKey: process.env.PRIVATE_KEY_SEPOLIA as string,
+    chainId: "84532",  // Base Sepolia
+    provider: process.env.PROVIDER_URI_84532 as string,
+    privateKey: process.env.PRIVATE_KEY_84532 as string,
     callback: {
-      target: "0x4A4e2D8f3fBb3525aD61db7Fc843c9bf097c362e",
+      target: "0x3b49DE82B86d677C072Dcc7ED47bcA9F20f0CF46",
     },
+    options: {
+      maxFeePerGas: "10000000",
+      callbackGasLimit: 100000,
+      overrideAxiomQueryFee: "3000000000",
+    }
   });
   await axiom.init();
   const args = await axiom.prove(input);
