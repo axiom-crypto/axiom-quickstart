@@ -24,12 +24,12 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
     options: {
       maxFeePerGas: "10000000",
       callbackGasLimit: 100000,
-      overrideAxiomQueryFee: "3000000000",
+      overrideAxiomQueryFee: "60000000000000000", // 30000000000000000, 3000000000
     }
   });
   await axiom.init();
   const args = await axiom.prove(input);
-  console.log("ZK proof generated successfully.");
+  console.log("ZK proof generated successfully.", args.args);
 
   if (!process.env.PRIVATE_KEY_SEPOLIA) {
     console.log("No private key provided: Query will not be sent to the blockchain.");
@@ -39,7 +39,8 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
   console.log("Sending Query to Axiom on-chain...");
   const receipt = await axiom.sendQuery();
   console.log("Transaction receipt:", receipt);
-  console.log(`View your Query on Axiom Explorer: https://explorer.axiom.xyz/v2/sepolia/query/${args.queryId}`);
+  console.log(`View your Query on Axiom Explorer: https://explorer.axiom.xyz/v2/base-sepolia/query/${args.queryId}`);
+  console.log(`View your Query on localhost: http://localhost:3000/v2/base-sepolia/query/${args.queryId}`);
 };
 
 axiomMain(inputs);
