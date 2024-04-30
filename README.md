@@ -29,11 +29,11 @@ To run Foundry tests that simulate the Axiom integration flow, run
 forge test -vvvv
 ```
 
-## Send a Query on-chain
+## Send a query on-chain
 
-> **IMPORTANT**: Please update the chain ID in the environment variable name to the chain ID that you are running on, if not 11155111 (Eth Sepolia).
+> **IMPORTANT**: Please update the chain ID in the environment variable name to the chain ID that you are running on, if not 11155111 (Sepolia testnet).
 
-To send a Query on Sepolia testnet (requires `PRIVATE_KEY_11155111` in `.env` file), run
+To send a query on Sepolia testnet (requires `PRIVATE_KEY_11155111` in `.env` file), run
 
 ```bash
 npx tsx app/index.ts 
