@@ -9,8 +9,7 @@ ast = true
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
 [rpc_endpoints]
-sepolia = "${PROVIDER_URI_SEPOLIA}"
-mainnet = "${PROVIDER_URI_MAINNET}"
+provider = "${PROVIDER_URI_11155111}"
 
 [fmt]
   bracket_spacing = true
