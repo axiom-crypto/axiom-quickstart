@@ -29,11 +29,11 @@ To run Foundry tests that simulate the Axiom integration flow, run
 forge test -vvvv
 ```
 
-## Send a Query on-chain
+## Send a query on-chain
 
-> **IMPORTANT**: Please update the chain ID in the environment variable name to the chain ID that you are running on, if not 11155111 (Eth Sepolia).
+> **IMPORTANT**: Please update the chain ID in the environment variable name to the chain ID that you are running on, if not 11155111 (Sepolia testnet).
 
-To send a Query on Sepolia testnet (requires `PRIVATE_KEY_11155111` in `.env` file), run
+To send a query on Sepolia testnet (requires `PRIVATE_KEY_11155111` in `.env` file), run
 
 ```bash
 npx tsx app/index.ts 
@@ -43,13 +43,13 @@ npx tsx app/index.ts
 
 ```bash
 # compile
-npx axiom circuit compile app/axiom/average.circuit.ts --provider $PROVIDER_URI_11155111
+npx axiom circuit compile app/axiom/average.circuit.ts --provider $RPC_URL_11155111
 
 # prove
-npx axiom circuit prove app/axiom/average.circuit.ts --sourceChainId 11155111 --provider $PROVIDER_URI_11155111
+npx axiom circuit prove app/axiom/average.circuit.ts --sourceChainId 11155111 --provider $RPC_URL_11155111
 
 # get parameters to send a query to Axiom using sendQuery
-npx axiom circuit query-params <callback contract address> --refundAddress <your Sepolia wallet address> --sourceChainId 11155111 --provider $PROVIDER_URI_11155111
+npx axiom circuit query-params <callback contract address> --refundAddress <your Sepolia wallet address> --sourceChainId 11155111 --provider $RPC_URL_11155111
 ```
 
 ## Package Manager Installation
