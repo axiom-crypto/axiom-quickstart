@@ -1,7 +1,5 @@
-
+import "dotenv/config";
 import { circuit, CircuitInputs } from "./axiom/average.circuit";
-import dotenv from "dotenv";
-dotenv.config();
 import { Axiom, UserInput } from '@axiom-crypto/client';
 
 // Inputs to the circuit
