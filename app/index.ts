@@ -13,8 +13,8 @@ import compiledCircuit from "./axiom/data/compiled.json";
 
 const CHAIN_ID = "11155111";
 
-if (!process.env[`PROVIDER_URI_${CHAIN_ID}`]) {
-  console.error(`No provider URI provided for env var \`PROVIDER_URI_${CHAIN_ID}\`.`);
+if (!process.env[`RPC_URL_${CHAIN_ID}`]) {
+  console.error(`No provider URI provided for env var \`RPC_URL_${CHAIN_ID}\`.`);
   process.exit(1);
 }
 
@@ -23,7 +23,7 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
     circuit: circuit,
     compiledCircuit: compiledCircuit,
     chainId: CHAIN_ID,  // Sepolia
-    provider: process.env[`PROVIDER_URI_${CHAIN_ID}`] as string,
+    provider: process.env[`RPC_URL_${CHAIN_ID}`] as string,
     privateKey: process.env[`PRIVATE_KEY_${CHAIN_ID}`] as string,
     callback: {
       target: "0x4A4e2D8f3fBb3525aD61db7Fc843c9bf097c362e",

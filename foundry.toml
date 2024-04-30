@@ -9,7 +9,7 @@ ast = true
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
 [rpc_endpoints]
-provider = "${PROVIDER_URI_11155111}"
+provider = "${RPC_URL_11155111}"
 
 [fmt]
   bracket_spacing = true
