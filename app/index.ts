@@ -22,16 +22,16 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
       target: "0x3b49DE82B86d677C072Dcc7ED47bcA9F20f0CF46",
     },
     options: {
-      maxFeePerGas: "10000000",
-      callbackGasLimit: 100000,
-      overrideAxiomQueryFee: "60000000000000000", // 30000000000000000, 3000000000
+      maxFeePerGas: "50000000",
+      // callbackGasLimit: 100000,
+      overrideAxiomQueryFee: "3000000000", // 3000000000000000, 3000000000
     }
   });
   await axiom.init();
   const args = await axiom.prove(input);
   console.log("ZK proof generated successfully.", args.args);
 
-  if (!process.env.PRIVATE_KEY_SEPOLIA) {
+  if (!process.env.PRIVATE_KEY_84532) {
     console.log("No private key provided: Query will not be sent to the blockchain.");
     return;
   }
