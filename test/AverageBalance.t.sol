@@ -18,7 +18,7 @@ contract AverageBalanceTest is AxiomTest {
     bytes32 public querySchema;
 
     function setUp() public {
-        _createSelectForkAndSetupAxiom("sepolia", 5_103_100);
+        _createSelectForkAndSetupAxiom("provider");
 
         input =
             AxiomInput({ blockNumber: 4_205_938, addr: address(0x8018fe32fCFd3d166E8b4c4E37105318A84BA11b) });
