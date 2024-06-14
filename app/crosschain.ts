@@ -36,7 +36,7 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
     },
     bridgeType: BridgeType.BlockhashOracle,
     callback: {
-      target: "0x4A4e2D8f3fBb3525aD61db7Fc843c9bf097c362e",
+      target: "0x06442B357582282b4f7E76D47787dcF1C175fF1c",
     },
   });
   await axiom.init();
