@@ -9,15 +9,16 @@ ast = true
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
 [rpc_endpoints]
-provider = "${PROVIDER_URI_11155111}"
+source_provider = "${RPC_URL_11155111}"
+target_provider = "${RPC_URL_84532}"
 
 [fmt]
-  bracket_spacing = true
-  int_types = "long"
-  line_length = 120
-  multiline_func_header = "attributes_first"
-  number_underscore = "thousands"
-  quote_style = "double"
-  single_line_statement_blocks = "multi"
-  tab_width = 4
-  wrap_comments = false
+bracket_spacing = true
+int_types = "long"
+line_length = 120
+multiline_func_header = "attributes_first"
+number_underscore = "thousands"
+quote_style = "double"
+single_line_statement_blocks = "multi"
+tab_width = 4
+wrap_comments = false

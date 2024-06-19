@@ -18,7 +18,14 @@ contract AverageBalanceTest is AxiomTest {
     bytes32 public querySchema;
 
     function setUp() public {
-        _createSelectForkAndSetupAxiom("source_provider");
+        _createSelectForkAndSetupAxiomCrosschain(
+            "target-provider",
+            "source-provider",
+            5_500_000,
+            1,
+            true,
+            0
+        );
 
         input = AxiomInput({
             blockNumber: 4_205_938,
