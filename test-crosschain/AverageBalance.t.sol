@@ -8,6 +8,8 @@ import {AverageBalance} from "../src/AverageBalance.sol";
 contract AverageBalanceTest is AxiomTest {
     using Axiom for Query;
 
+    uint64 public constant SOURCE_CHAIN_ID = 11155111;
+
     struct AxiomInput {
         uint64 blockNumber;
         address addr;
@@ -19,10 +21,10 @@ contract AverageBalanceTest is AxiomTest {
 
     function setUp() public {
         _createSelectForkAndSetupAxiomCrosschain(
-            "target-provider",
-            "source-provider",
+            "target_provider",
+            "source_provider",
             5_500_000,
-            1,
+            SOURCE_CHAIN_ID,
             true,
             0
         );
@@ -34,7 +36,7 @@ contract AverageBalanceTest is AxiomTest {
         querySchema = axiomVm.readCircuit("app/axiom/average.circuit.ts");
         averageBalance = new AverageBalance(
             axiomV2QueryAddress,
-            uint64(block.chainid),
+            SOURCE_CHAIN_ID,
             querySchema
         );
     }
