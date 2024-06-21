@@ -11,11 +11,11 @@ import inputs from './axiom/data/inputs.json';
 //   `npx axiom circuit compile app/axiom/average.circuit.ts`
 import compiledCircuit from "./axiom/data/compiled.json";
 
-
 const CHAIN_ID = "11155111";
+const RPC_URL = process.env[`RPC_URL_${CHAIN_ID}`];
 
-if (!process.env[`PROVIDER_URI_${CHAIN_ID}`]) {
-  console.error(`No provider URI provided for env var \`PROVIDER_URI_${CHAIN_ID}\`.`);
+if (!RPC_URL) {
+  console.error(`RPC URL must be provided for env var \`RPC_URL_${CHAIN_ID}\`.`);
   process.exit(1);
 }
 
@@ -24,7 +24,7 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
     circuit: circuit,
     compiledCircuit: compiledCircuit,
     chainId: CHAIN_ID,  // Sepolia
-    provider: process.env[`PROVIDER_URI_${CHAIN_ID}`] as string,
+    rpcUrl: process.env[`RPC_URL_${CHAIN_ID}`] as string,
     privateKey: process.env[`PRIVATE_KEY_${CHAIN_ID}`] as string,
     callback: {
       target: "0x4A4e2D8f3fBb3525aD61db7Fc843c9bf097c362e",
