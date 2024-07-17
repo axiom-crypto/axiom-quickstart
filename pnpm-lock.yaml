@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@axiom-crypto/client':
-        specifier: 2.1.0-rc.1
-        version: 2.1.0-rc.1(typescript@5.3.3)
+        specifier: 2.1.0
+        version: 2.1.0(typescript@5.3.3)
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
@@ -30,11 +30,11 @@ packages:
   '@adraffy/ens-normalize@1.10.1':
     resolution: {integrity: sha512-96Z2IP3mYmF1Xg2cDm8f1gWGf/HUVedQ3FMifV4kG/PQ4yEP51xDtRAEfhVNt5f/uzpNkZHwWQuUcu6D6K+Ekw==}
 
-  '@axiom-crypto/circuit@2.1.0-rc.1':
-    resolution: {integrity: sha512-epi6HTekhDTLgqt/8+WRDlFLok+OU6WPvi55rb4CDHgjiPsy7fl4te8y5mhhBZ3iEm/JzfzsKuiq6pAfFaUpNg==}
+  '@axiom-crypto/circuit@2.1.0':
+    resolution: {integrity: sha512-QiBZgEl3DO1iU3kuclnhqVruzwvEHPcvqKsh8RDK9mpMCMGfMTg3/bTsSe1nxHPr78c3QYoBO8sZxPr14Twv7w==}
 
-  '@axiom-crypto/client@2.1.0-rc.1':
-    resolution: {integrity: sha512-Iip9sUbKOJeDStdCar4dwn202i3gvWkWsPvLojBa7ZQ9p0toX0vorN5zG/qJziEHaKj4jgken1n7Vf8yP3z21A==}
+  '@axiom-crypto/client@2.1.0':
+    resolution: {integrity: sha512-YnjzUhMO7Z75R9FK2mpKwAe7LumO2tYRvAiz0lABMyiGYM1VjrazkfCIiR7Tf+dmCfWgnA7a449j2sgv506ZBg==}
     hasBin: true
 
   '@axiom-crypto/halo2-lib-js@0.3.4':
@@ -191,8 +191,8 @@ packages:
     resolution: {integrity: sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ==}
     engines: {node: '>= 16'}
 
-  '@scure/base@1.1.6':
-    resolution: {integrity: sha512-ok9AWwhcgYuGG3Zfhyqg+zwl+Wn5uE+dwC0NV/2qQkx4dABbb/bx96vWu8NSj+BNjjSjno+JRYRjle1jV08k3g==}
+  '@scure/base@1.1.7':
+    resolution: {integrity: sha512-PPNYBslrLNNUQ/Yad37MHYsNQtK67EhWb6WtSvNLLPo7SdVZgkUjD6Dg+5On7zNwmskf8OX7I7Nx5oN+MIWE0g==}
 
   '@scure/bip32@1.3.2':
     resolution: {integrity: sha512-N1ZhksgwD3OBlwTv3R6KFEcPojl/W4ElJOeCZdi+vuI5QmTFwLq3OFf2zd2ROpKvxFdgZ6hUpb0dx9bVNEwYCA==}
@@ -265,8 +265,8 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  ethers@6.13.0:
-    resolution: {integrity: sha512-+yyQQQWEntY5UVbCv++guA14RRVFm1rSnO1GoLFdrK7/XRWMoktNgyG9UjwxrQqGBfGyFKknNZ81YpUS2emCgg==}
+  ethers@6.13.1:
+    resolution: {integrity: sha512-hdJ2HOxg/xx97Lm9HdCWk949BfYqYWpyw4//78SiwOLgASyfrNszfMUNB2joKjvGUdwhHfaiMMFFwacVVoLR9A==}
     engines: {node: '>=14.0.0'}
 
   follow-redirects@1.15.6:
@@ -366,12 +366,12 @@ packages:
       utf-8-validate:
         optional: true
 
-  ws@8.5.0:
-    resolution: {integrity: sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==}
+  ws@8.17.1:
+    resolution: {integrity: sha512-6XQFvXTkbfUOZOKKILFG1PDK2NDQs4azKQl26T0YS5CxqWLgXajbPZ+h4gZekJyRqFU8pvnbAbbs/3TgRPy+GQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
-      utf-8-validate: ^5.0.2
+      utf-8-validate: '>=5.0.2'
     peerDependenciesMeta:
       bufferutil:
         optional: true
@@ -384,13 +384,13 @@ snapshots:
 
   '@adraffy/ens-normalize@1.10.1': {}
 
-  '@axiom-crypto/circuit@2.1.0-rc.1(typescript@5.3.3)':
+  '@axiom-crypto/circuit@2.1.0(typescript@5.3.3)':
     dependencies:
       '@axiom-crypto/halo2-lib-js': 0.3.4
       '@axiom-crypto/halo2-wasm': 0.3.4
       '@axiom-crypto/tools': 2.1.1
       commander: 11.1.0
-      ethers: 6.13.0
+      ethers: 6.13.1
       viem: 2.8.18(typescript@5.3.3)
     transitivePeerDependencies:
       - bufferutil
@@ -399,9 +399,9 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@axiom-crypto/client@2.1.0-rc.1(typescript@5.3.3)':
+  '@axiom-crypto/client@2.1.0(typescript@5.3.3)':
     dependencies:
-      '@axiom-crypto/circuit': 2.1.0-rc.1(typescript@5.3.3)
+      '@axiom-crypto/circuit': 2.1.0(typescript@5.3.3)
       chalk: 4.1.2
       commander: 11.1.0
       prompts: 2.4.2
@@ -416,7 +416,7 @@ snapshots:
   '@axiom-crypto/halo2-lib-js@0.3.4':
     dependencies:
       '@axiom-crypto/halo2-wasm': 0.3.4
-      ethers: 6.13.0
+      ethers: 6.13.1
       prettier: 1.18.2
     transitivePeerDependencies:
       - bufferutil
@@ -428,7 +428,7 @@ snapshots:
     dependencies:
       axios: 1.7.2
       bs58: 5.0.0
-      ethers: 6.13.0
+      ethers: 6.13.1
       form-data: 4.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -510,18 +510,18 @@ snapshots:
 
   '@noble/hashes@1.3.2': {}
 
-  '@scure/base@1.1.6': {}
+  '@scure/base@1.1.7': {}
 
   '@scure/bip32@1.3.2':
     dependencies:
       '@noble/curves': 1.2.0
       '@noble/hashes': 1.3.2
-      '@scure/base': 1.1.6
+      '@scure/base': 1.1.7
 
   '@scure/bip39@1.2.1':
     dependencies:
       '@noble/hashes': 1.3.2
-      '@scure/base': 1.1.6
+      '@scure/base': 1.1.7
 
   '@types/node@18.15.13': {}
 
@@ -598,7 +598,7 @@ snapshots:
       '@esbuild/win32-ia32': 0.19.11
       '@esbuild/win32-x64': 0.19.11
 
-  ethers@6.13.0:
+  ethers@6.13.1:
     dependencies:
       '@adraffy/ens-normalize': 1.10.1
       '@noble/curves': 1.2.0
@@ -606,7 +606,7 @@ snapshots:
       '@types/node': 18.15.13
       aes-js: 4.0.0-beta.5
       tslib: 2.4.0
-      ws: 8.5.0
+      ws: 8.17.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -687,4 +687,4 @@ snapshots:
 
   ws@8.13.0: {}
 
-  ws@8.5.0: {}
+  ws@8.17.1: {}
