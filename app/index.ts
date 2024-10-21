@@ -23,7 +23,7 @@ const axiomMain = async (input: UserInput<CircuitInputs>) => {
   const axiom = new Axiom({
     circuit: circuit,
     compiledCircuit: compiledCircuit,
-    chainId: CHAIN_ID,  // Sepolia
+    chainId: CHAIN_ID,
     rpcUrl: process.env[`RPC_URL_${CHAIN_ID}`] as string,
     privateKey: process.env[`PRIVATE_KEY_${CHAIN_ID}`] as string,
     callback: {
